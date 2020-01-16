@@ -1,19 +1,14 @@
 {
   "name": "channel-integrator",
-  "version": "1.0.0",
-  "description": "Channel Points Integrator Alert",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rizkyrwijaya/channelIntegrator.git"
-  },
-  "author": "kopimocha",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rizkyrwijaya/channelIntegrator/issues"
-  },
-  "homepage": "https://github.com/rizkyrwijaya/channelIntegrator#readme"
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "morgan": "~1.9.1"
+  }
 }
