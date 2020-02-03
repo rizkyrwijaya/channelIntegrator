@@ -6,6 +6,7 @@ var session = require("express-session");
 var passport = require("passport");
 var OAuth2Strategy = require("passport-oauth").OAuth2Strategy;
 var hbs = require("express-handlebars");
+var request        = require('request');
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -24,8 +25,8 @@ app.set('view engine','hbs');
 app.engine('hbs', hbs({
   extname:'hbs',
   defaultView: 'default',
-  layoutsDir: __dirname + 'views/layouts/',
-  partialsDir: __dirname + 'views/partials'
+  layoutsDir: __dirname + '/views/layouts',
+  partialsDir: __dirname + '/views/partials'
 }));
 
 app.use(logger("dev"));
@@ -37,26 +38,27 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.static('public'))
 
 OAuth2Strategy.prototype.userProfile = function(accessToken, done) {
   var options = {
-    url: "https://api.twitch.tv/helix/users",
-    method: "GET",
+    url: 'https://api.twitch.tv/helix/users',
+    method: 'GET',
     headers: {
-      "Client-ID": TWITCH_CLIENT_ID,
-      Accept: "application/vnd.twitchtv.v5+json",
-      Authorization: "Bearer " + accessToken
+      'Client-ID': TWITCH_CLIENT_ID,
+      'Accept': 'application/vnd.twitchtv.v5+json',
+      'Authorization': 'Bearer ' + accessToken
     }
   };
 
-  request(options, function(error, response, body) {
+  request(options, function (error, response, body) {
     if (response && response.statusCode == 200) {
       done(null, JSON.parse(body));
     } else {
       done(JSON.parse(body));
     }
   });
-};
+}
 
 
 passport.serializeUser(function(user, done) {
@@ -90,7 +92,7 @@ passport.use('twitch', new OAuth2Strategy({
 
 app.get('/auth/twitch', passport.authenticate('twitch', { scope: 'user_read' }));
 
-app.get('/auth/twitch/callback', passport.authenticate('twitch', { successRedirect: '/', failureRedirect: '/' }));
+app.get('/auth/twitch/callback', passport.authenticate('twitch', { successRedirect: '/alertPage', failureRedirect: '/' }));
 
 
 app.use("/", indexRouter);
