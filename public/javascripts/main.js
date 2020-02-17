@@ -21,7 +21,7 @@ function authUrl() {
         '&client_id=' + clientId + 
         '&redirect_uri=' + redirectURI +
         '&state=' + sessionStorage.twitchOAuthState +
-        '&scope=' + scope;
+        '&scope=' + scope;  
     return url
 }
 
