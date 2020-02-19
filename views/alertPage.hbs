@@ -1,7 +1,8 @@
-
-<p>Starting up</p>
-<script>var accessToken = {{data.accessToken}};</script>
-<script>var refreshToken = {{data.refreshToken}};</script>
+<link rel="stylesheet" href="/alertbox/sweetalert2.min.css">
+<script>var accessToken = "{{data.accessToken}}";</script>
+<script>var refreshToken = "{{data.refreshToken}}";</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="http://localhost:3000/javascripts/pubsub.js"></script>
+<script src="/alertbox/sweetalert2.all.min.js"></script>
+<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
 {{!-- TODO: Add the AlertBox Logic, Sub to Topic, Refresh token --}}

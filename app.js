@@ -39,6 +39,7 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static('public'))
+app.use('/alertbox', express.static(__dirname + '/node_modules/sweetalert2/dist/'));
 
 OAuth2Strategy.prototype.userProfile = function(accessToken, done) {
   var options = {
