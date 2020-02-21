@@ -2,13 +2,14 @@
     "clientId" : "bj25s130tkb171z59dtgxbk2jdrie3",
     "scope" : "channel:read:redemptions",
     "type" : "reward-redeemed",
+    "topic" : "channel-points-channel-v1.",
     "listOfCustomRewards" : [
         {
             "rewardName" : "dev test with text",
             "isWithUserInput" : true,
             "alertType" : "img+userInput",
             "alertData" : {
-                "imgPath" : "localhost:3000/images/Character Revamped.png"
+                "imgPath" : "http://localhost:3000/images/Character%20Revamped.png"
             }
         }
     ]

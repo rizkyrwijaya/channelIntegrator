@@ -91,7 +91,7 @@ passport.use('twitch', new OAuth2Strategy({
   }
 ));
 
-app.get('/auth/twitch', passport.authenticate('twitch', { scope: 'user_read' }));
+app.get('/auth/twitch', passport.authenticate('twitch', { scope: 'channel:read:redemptions' }));
 
 app.get('/auth/twitch/callback', passport.authenticate('twitch', { successRedirect: '/alertPage', failureRedirect: '/' }));
 
