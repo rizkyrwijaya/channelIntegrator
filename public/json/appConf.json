@@ -6,10 +6,18 @@
     "listOfCustomRewards" : [
         {
             "rewardName" : "dev test with text",
-            "isWithUserInput" : true,
-            "alertType" : "img+userInput",
+            "alertType" : "img+userInput+audio+showUserName",
             "alertData" : {
-                "imgPath" : "http://localhost:3000/images/Character%20Revamped.png"
+                "imgPath" : "http://localhost:3000/images/Character%20Revamped.png",
+                "audio" : "http://localhost:3000/audio/ayaya.mp3"
+            }
+        },
+        {
+            "rewardName" : "DevTest!",
+            "alertType" : "img+audio",
+            "alertData" : {
+                "imgPath" : "http://localhost:3000/images/animewow.gif",
+                "audio" : "http://localhost:3000/audio/animewow.mp3"
             }
         }
     ]

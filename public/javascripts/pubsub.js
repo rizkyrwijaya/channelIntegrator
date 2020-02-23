@@ -20,20 +20,49 @@ function showAlert(message){
   config.listOfCustomRewards.forEach(element => {
     if(element.rewardName == alertFromTwitch.data.redemption.reward.title){
       console.log(element.alertData.imgPath)
+      
+      var options = loadOptions(element.alertType);
       var swalData = {
         backdrop: false,
         showConfirmButton: false,
-        timer: 1000,
-        text: alertFromTwitch.data.redemption.user_input,
-        onOpen: function() {
-          var zippi = new Audio('http://localhost:3000/audio/ayaya.mp3')
-          zippi.play();
+        timer: 1500,
+        customClass: {
+          container: 'container-class',
+          popup: 'popup-class',
+          header: 'header-class',
+          title: 'title-class',
+          image: 'image-class',
+          content: 'content-class'
         }
+      };
+
+      if(options.includes("img")){
+        swalData.imageUrl = element.alertData.imgPath;
       }
+
+      if(options.includes("showUserName")){
+        swalData.title = "<b>" + alertFromTwitch.data.redemption.user.display_name + " has redeemed  "+ element.rewardName + "</b>";
+      }
+
+      if(options.includes("userInput")){
+          swalData.text = alertFromTwitch.data.redemption.user_input;
+      }
+
+      if(options.includes("audio")){
+          swalData.onOpen = function() {
+            new Audio(element.alertData.audio).play()
+          }
+      }
+
       console.log(swalData);
       Swal.fire(swalData)
     }
   });
+}
+
+function loadOptions(options){
+   var loadedOptions = options.split("+");
+   return loadedOptions;
 }
 
 function listen(topic) {
