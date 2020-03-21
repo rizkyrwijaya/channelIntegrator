@@ -19,6 +19,22 @@
                 "imgPath" : "http://localhost:3000/images/animewow.gif",
                 "audio" : "http://localhost:3000/audio/animewow.mp3"
             }
+        },
+        {
+            "rewardName" : "ayaya!",
+            "alertType" : "img+audio+showUserName",
+            "alertData" : {
+                "imgPath" : "http://localhost:3000/images/ayaya.gif",
+                "audio" : "http://localhost:3000/audio/ayaya.mp3"
+            }
+        },
+        {
+            "rewardName" : "Scare me",
+            "alertType" : "img+audio+showUserName",
+            "alertData" : {
+                "imgPath" : "http://localhost:3000/images/scary.gif",
+                "audio" : "http://localhost:3000/audio/suspense.mp3"
+            }
         }
     ]
 }
